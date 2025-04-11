@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_filters',
     'rest_framework.authtoken',
     'authen_app',
     'session_auth_app',
@@ -46,6 +47,9 @@ INSTALLED_APPS = [
     'signal_app',
     'custom_auth_app',
     'jwt_auth',
+    'filter_data_app',
+    'pagination_app',
+    'serializer_relation_app',
 ]
 
 MIDDLEWARE = [
@@ -131,7 +135,33 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#global authentication
 # REST_FRAMEWORK={
 #     'DEFAULT_AUTHENTICATION_CLASSES':['rest_framework.authentication.BasicAuthentication'],
 #     'DEFAULT_PERMISSION_CLASSES':['rest_framework.permissions.IsAuthenticated']
+# }
+
+#globale throttling
+REST_FRAMEWORK={
+    'DEFAULT_THROTTLE_RATES':{
+        'anon':'2/day',
+        'user':'5/hour',
+        'Test':'3/minute',
+    }
+}
+
+#global filtering
+# REST_FRAMEWORK={
+#     'DEFAULT_FILTER_BACKENDS':['django_filters.rest_framework.DjangoFilterBackend']
+# }
+
+#global serch
+
+# REST_FRAMEWORK={
+#     'SEARCH_PARAM':'q'
+# }
+
+# REST_FRAMEWORK={
+#     'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.PageNumberPagination',
+#     'PAGE_SIZE':3
 # }

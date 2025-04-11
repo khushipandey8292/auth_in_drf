@@ -25,18 +25,26 @@ from token_auth_app import views as v4
 from signal_app import views as v5
 from custom_auth_app import views as v6
 from jwt_auth import views as v7
+from filter_data_app import views as v8
+from pagination_app import views as v9
+from serializer_relation_app import views as v10
 from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView,TokenVerifyView
 # from rest_framework.authtoken.views import obtain_auth_token
 router=DefaultRouter()
-# router.register('studentapi',v1.StudentModelViewSet,basename='student')
+router.register('studentapi',v1.StudentModelViewSet,basename='student')
 # router.register('studentapi',v2.StudentModelViewSet,basename='student')
 # # router.register('studentapi',v3.StudentModelViewSet,basename='student')
 # router.register('studentapi',v4.StudentModelViewSet,basename='student')
 # router.register('studentapi',v5.StudentModelViewSet,basename='student')
 # router.register('studentapi',v6.StudentModelViewSet,basename='student')
-router.register('studentapi',v7.StudentModelViewSet,basename='student')
+# router.register('studentapi',v7.StudentModelViewSet,basename='student')
+# router.register('singer',v10.SingerViewSet,basename='singer')
+# router.register('song',v10.SongViewSet,basename='song')
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('studentapi/',v8.StudentList.as_view()),
+    # path('studentapi/',v9.StudentList.as_view()),
+    # path('page/',v9.item_list),
     path('',include(router.urls)),
     path('auth/',include('rest_framework.urls',namespace='rest_framework')),
     # path('gottoken/',obtain_auth_token),
